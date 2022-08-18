@@ -6,13 +6,13 @@ import store from './store';
 import theme from './theme';
 
 const App = () => {
-    return (
-        <Provider store={store}>
-            <ThemeProvider theme={theme}>
-                <NotesContainer />
-            </ThemeProvider>
-        </Provider>
-    );
-}
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <NotesContainer />
+      </ThemeProvider>
+    </Provider>
+  );
+};
 
 export default App;
