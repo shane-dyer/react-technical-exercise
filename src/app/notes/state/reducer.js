@@ -1,4 +1,11 @@
-import { LOAD_NOTES, LOAD_NOTES_SUCCESS, ADD_NOTE, ADD_NOTE_SUCCESS } from './actions';
+import {
+  LOAD_NOTES,
+  LOAD_NOTES_SUCCESS,
+  ADD_NOTE,
+  ADD_NOTE_SUCCESS,
+  DELETE_NOTE,
+  DELETE_NOTE_SUCCESS,
+} from './actions';
 
 const initialState = {
   notes: {},
@@ -13,6 +20,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         notes: action.notes,
       };
+
     case ADD_NOTE:
       return state;
     case ADD_NOTE_SUCCESS:
@@ -23,6 +31,19 @@ export default function reducer(state = initialState, action) {
           [action.note.id]: action.note,
         },
       };
+
+    case DELETE_NOTE:
+      return state;
+    case DELETE_NOTE_SUCCESS:
+      const newState = {
+        ...state,
+        notes: {
+          ...state.notes,
+        },
+      };
+      delete newState.notes[action.id];
+      return newState;
+
     default:
       return state;
   }

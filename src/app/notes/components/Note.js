@@ -9,11 +9,27 @@ const Note = styled.div`
   ${(props) => `padding: ${props.theme.space[3]}px 0;`}
   ${(props) => `font-size: ${props.theme.fontSizes.gamma}px;`}
   ${(props) => `border-bottom: ${props.theme.noteBorderStyle};`}
-  cursor: pointer;
+  p {
+    margin: 0;
+  }
+  button {
+    cursor: pointer;
+  }
 `;
 
-const StyledNote = (props) => {
-  return <Note>{props.note.text}</Note>;
+const StyledNote = ({ note, deleteNote }) => {
+  const onDeleteClick = () => {
+    deleteNote(note.id);
+  };
+
+  return (
+    <Note>
+      <p>{note.text}</p>
+      <button type="button" onClick={onDeleteClick}>
+        Delete
+      </button>
+    </Note>
+  );
 };
 
 export default StyledNote;

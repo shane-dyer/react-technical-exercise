@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Notes from './Notes';
 import { loadNotes } from '../state';
+import Notes from './Notes';
 
 function mapStateToProps(state, ownProps) {
   return {

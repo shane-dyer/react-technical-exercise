@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Note from './Note';
+import NoteContainer from './NoteContainer';
 import AddNoteContainer from './AddNoteContainer';
 import Title from './Title';
 
@@ -36,7 +36,7 @@ const StyledNotes = ({ loadNotes, notes }) => {
       </header>
       <AddNoteContainer />
       {Object.values(notes).map((note) => {
-        return <Note key={note.id} note={note} />;
+        return <NoteContainer key={note.id} note={note} />;
       })}
     </Notes>
   );

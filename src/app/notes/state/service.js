@@ -51,8 +51,10 @@ const createNoteService = () => {
         notes[note.id] = updated;
         return updated;
 
+      // Had to modify this to return the note id to be able to delete it
       case operations.DELETE:
-        return delete notes[request.params.id];
+        delete notes[request.params.id];
+        return request.params.id;
 
       default:
         return;
@@ -103,10 +105,9 @@ export function updateNoteRequest(note) {
 }
 
 /**
- * When exectued returns true if successful
- * Returns
+ * When exectued returns the note id that was deleted
  * @param {string} id - the id of the note to be deleted
- * @returns {object} - a delete note request object
+ * @returns {number} - the deleted note id
  */
 export function deleteNoteRequest(id) {
   return {
