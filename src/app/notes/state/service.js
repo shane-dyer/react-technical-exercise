@@ -31,6 +31,7 @@ const createNoteService = () => {
     switch (request.operation) {
       case operations.LOAD:
         return notes;
+
       case operations.ADD:
         const id = lastId + 1;
         const newNote = {
@@ -40,6 +41,7 @@ const createNoteService = () => {
         notes[id] = newNote;
         lastId = id;
         return newNote;
+
       case operations.UPDATE:
         const note = request.params.note;
         const updated = {
@@ -48,8 +50,10 @@ const createNoteService = () => {
         };
         notes[note.id] = updated;
         return updated;
+
       case operations.DELETE:
         return delete notes[request.params.id];
+
       default:
         return;
     }
@@ -85,6 +89,20 @@ export function addNoteRequest(text) {
 }
 
 /**
+ * When exectued returns the note that was updated
+ * @param {object} note - a partial note object with the values to be updated set
+ * @returns {object} - an update note request object
+ */
+export function updateNoteRequest(note) {
+  return {
+    operation: operations.UPDATE,
+    params: {
+      note,
+    },
+  };
+}
+
+/**
  * When exectued returns true if successful
  * Returns
  * @param {string} id - the id of the note to be deleted
@@ -95,20 +113,6 @@ export function deleteNoteRequest(id) {
     operation: operations.DELETE,
     params: {
       id,
-    },
-  };
-}
-
-/**
- * When exectued returns the note that was updated
- * @param {object} note - a partial note object with the values to be updated set
- * @returns {object} - an update note request object
- */
-export function updateNoteRequest(note) {
-  return {
-    operation: operations.UPDATE,
-    params: {
-      note,
     },
   };
 }
