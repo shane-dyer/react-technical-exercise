@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const AddNote = styled.div`
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.05);
+  background: ${(props) => props.theme.addNoteBackground};
   padding: 8px 16px;
   border-radius: 5px;
   label {

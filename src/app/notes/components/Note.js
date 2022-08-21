@@ -5,14 +5,20 @@ const Note = styled.div`
   ${(props) => `background: ${props.theme.noteBackgroundColor};`}
   ${(props) => `border: ${props.theme.noteBorder};`}
   ${(props) => `color: ${props.theme.pageText};`}
-  ${(props) => `margin-bottom: ${props.theme.space[3]}px;`}
   ${(props) => `padding: ${props.theme.space[3]}px 0;`}
   ${(props) => `font-size: ${props.theme.fontSizes.gamma}px;`}
   ${(props) => `border-bottom: ${props.theme.noteBorderStyle};`}
+  &:hover {
+    ${(props) => `background: ${props.theme.noteHoverBackground};`}
+  }
   p {
     margin: 0;
   }
   button {
+    padding: 8px 16px;
+    border: 0;
+    background-color: ${(props) => props.theme.buttonDeleteBackground};
+    color: ${(props) => props.theme.buttonText};
     cursor: pointer;
   }
 `;

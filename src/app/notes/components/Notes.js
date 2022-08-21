@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import NoteContainer from './NoteContainer';
 import AddNoteContainer from './AddNoteContainer';
+import ThemeToggle from './ThemeToggle';
 import Title from './Title';
 
 const Notes = styled.div`
@@ -13,15 +14,9 @@ const Notes = styled.div`
     align-items: center;
     justify-content: space-between;
   }
-  #themeToggle {
-    border: 0;
-    padding: 8px 16px;
-    font-size: 12px;
-    cursor: pointer;
-  }
 `;
 
-const StyledNotes = ({ loadNotes, notes }) => {
+const StyledNotes = ({ loadNotes, notes, theme, toggleTheme }) => {
   useEffect(() => {
     loadNotes();
   }, [loadNotes]);
@@ -30,9 +25,7 @@ const StyledNotes = ({ loadNotes, notes }) => {
     <Notes>
       <header>
         <Title>Notes</Title>
-        <button type="button" id="themeToggle">
-          Toggle theme
-        </button>
+        <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
       </header>
       <AddNoteContainer />
       {Object.values(notes).map((note) => {
