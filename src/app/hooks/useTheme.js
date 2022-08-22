@@ -4,7 +4,9 @@ import { isDayTime } from '../utils/date';
 const themeFromStorage = localStorage.getItem('theme');
 const themeFromDateTime = isDayTime() ? 'light' : 'dark';
 
-export const useTheme = () => {
+// Custom hook to manage the app theme
+const useTheme = () => {
+  // Theme from storage takes presidence over theme from date time
   const [theme, setTheme] = useState(themeFromStorage || themeFromDateTime);
 
   const toggleTheme = () => {
@@ -13,19 +15,23 @@ export const useTheme = () => {
     setTheme(newTheme);
   };
 
+  // Update the theme depending on the time of day (7am to 7pm = light theme, otherwise dark)
+  // If a user has clicked the theme toggle button, clear the interval
   useEffect(() => {
     const interval = setInterval(() => {
       const themeFromStorage = localStorage.getItem('theme');
-      if (!themeFromStorage) {
+      if (themeFromStorage) {
+        clearInterval(interval);
+      } else {
         const newTheme = isDayTime() ? 'light' : 'dark';
         setTheme(newTheme);
-      } else {
-        clearInterval(interval);
       }
-    }, 1000);
+    }, 60000); // 1 minute
 
     return () => clearInterval(interval);
   }, []);
 
   return [theme, toggleTheme];
 };
+
+export default useTheme;

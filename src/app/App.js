@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import NotesContainer from './notes/components/NotesContainer';
 import store from './store';
 import { lightTheme, darkTheme } from './theme';
-import { useTheme } from './hooks/useTheme';
+import useTheme from './hooks/useTheme';
 
 const App = () => {
   const [theme, toggleTheme] = useTheme();
