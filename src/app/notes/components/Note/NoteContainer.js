@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateNote, deleteNote } from '../state';
+import { updateNote, deleteNote } from '../../state';
 import Note from './Note';
 
 function mapStateToProps(state, ownProps) {

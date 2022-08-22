@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import NoteContainer from './NoteContainer';
+import NoteContainer from './Note/NoteContainer';
 import AddNoteContainer from './AddNoteContainer';
 import ThemeToggle from './ThemeToggle';
 import Title from './Title';

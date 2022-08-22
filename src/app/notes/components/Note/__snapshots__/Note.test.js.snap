@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Note component should render with given state from redux store 1`] = `
+<div
+  className="sc-bdVaJa bXxAPE"
+>
+  <p
+    onClick={[Function]}
+  >
+    Test note 1
+  </p>
+  <button
+    aria-label="Delete note"
+    className="delete-button"
+    onClick={[Function]}
+    title="Delete note"
+    type="button"
+  >
+    Delete
+  </button>
+</div>
+`;

@@ -1,4 +1,4 @@
-const global = {
+const shared = {
   space: [0, 4, 8, 16, 32],
   fontSizes: {
     alpha: 48,
@@ -9,7 +9,7 @@ const global = {
 };
 
 const lightTheme = {
-  ...global,
+  ...shared,
   pageBackground: 'papayawhip',
   pageTitle: 'blueViolet',
   pageText: 'slategrey',
@@ -29,7 +29,7 @@ const lightTheme = {
 };
 
 const darkTheme = {
-  ...global,
+  ...shared,
   pageBackground: '#222',
   pageTitle: 'blueViolet',
   pageText: '#ddd',

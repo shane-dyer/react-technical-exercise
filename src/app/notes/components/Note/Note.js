@@ -33,8 +33,12 @@ const Note = styled.div`
     color: ${(props) => props.theme.buttonText};
     cursor: pointer;
   }
-  .hidden {
-    display: none;
+  .edit {
+    display: flex;
+  }
+  span {
+    font-size: 10px;
+    margin: 9px 0 0 8px;
   }
 `;
 
@@ -69,13 +73,14 @@ const StyledNote = ({ note, updateNote, deleteNote }) => {
 
   return (
     <Note>
-      <div>
-        {editing ? (
+      {editing ? (
+        <div className="edit">
           <input ref={inputRef} type="text" value={note.text} onChange={onTextChange} onKeyDown={onKeyDown} />
-        ) : (
-          <p onClick={() => setEditing(true)}>{note.text}</p>
-        )}
-      </div>
+          <span>Press 'Enter' to save</span>
+        </div>
+      ) : (
+        <p onClick={() => setEditing(true)}>{note.text}</p>
+      )}
       <button
         type="button"
         title="Delete note"
