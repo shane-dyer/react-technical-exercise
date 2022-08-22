@@ -3,6 +3,8 @@ import {
   LOAD_NOTES_SUCCESS,
   ADD_NOTE,
   ADD_NOTE_SUCCESS,
+  UPDATE_NOTE,
+  UPDATE_NOTE_SUCCESS,
   DELETE_NOTE,
   DELETE_NOTE_SUCCESS,
 } from './actions';
@@ -24,6 +26,17 @@ export default function reducer(state = initialState, action) {
     case ADD_NOTE:
       return state;
     case ADD_NOTE_SUCCESS:
+      return {
+        ...state,
+        notes: {
+          ...state.notes,
+          [action.note.id]: action.note,
+        },
+      };
+
+    case UPDATE_NOTE:
+      return state;
+    case UPDATE_NOTE_SUCCESS:
       return {
         ...state,
         notes: {

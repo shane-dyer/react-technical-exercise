@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Note = styled.div`
@@ -13,25 +13,70 @@ const Note = styled.div`
   }
   p {
     margin: 0;
+    cursor: pointer;
   }
-  button {
+  input {
+    display: block;
+    background: ${(props) => props.theme.textFieldBackground};
+    border: ${(props) => props.theme.textFieldBorderStyle};
+    padding: 8px;
+    margin: 0;
+  }
+  .delete-button {
     padding: 8px 16px;
     border: 0;
     background-color: ${(props) => props.theme.buttonDeleteBackground};
     color: ${(props) => props.theme.buttonText};
     cursor: pointer;
   }
+  .hidden {
+    display: none;
+  }
 `;
 
-const StyledNote = ({ note, deleteNote }) => {
+const StyledNote = ({ note, updateNote, deleteNote }) => {
+  const inputRef = useRef(null);
+  const [editing, setEditing] = useState(false);
+
+  const onTextChange = (event) => {
+    updateNote({
+      id: note.id,
+      text: event.target.value,
+    });
+  };
+
+  const onKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === 'Escape') {
+      setEditing(false);
+    }
+  };
+
   const onDeleteClick = () => {
     deleteNote(note.id);
   };
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [editing]);
+
   return (
     <Note>
-      <p>{note.text}</p>
-      <button type="button" title="Delete note" aria-label="Delete note" onClick={onDeleteClick}>
+      <div>
+        {editing ? (
+          <input ref={inputRef} type="text" value={note.text} onChange={onTextChange} onKeyDown={onKeyDown} />
+        ) : (
+          <p onClick={() => setEditing(true)}>{note.text}</p>
+        )}
+      </div>
+      <button
+        type="button"
+        title="Delete note"
+        aria-label="Delete note"
+        className="delete-button"
+        onClick={onDeleteClick}
+      >
         Delete
       </button>
     </Note>

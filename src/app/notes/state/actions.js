@@ -1,4 +1,4 @@
-import { loadNotesRequest, addNoteRequest, deleteNoteRequest } from './service';
+import { loadNotesRequest, addNoteRequest, updateNoteRequest, deleteNoteRequest } from './service';
 
 const ns = 'notes/';
 
@@ -7,6 +7,9 @@ export const LOAD_NOTES_SUCCESS = `${ns}LOAD_NOTES_SUCCESS`;
 
 export const ADD_NOTE = `${ns}ADD_NOTE`;
 export const ADD_NOTE_SUCCESS = `${ns}ADD_NOTE_SUCCESS`;
+
+export const UPDATE_NOTE = `${ns}UPDATE_NOTE`;
+export const UPDATE_NOTE_SUCCESS = `${ns}UPDATE_NOTE_SUCCESS`;
 
 export const DELETE_NOTE = `${ns}DELETE_NOTE`;
 export const DELETE_NOTE_SUCCESS = `${ns}DELETE_NOTE_SUCCESS`;
@@ -41,6 +44,23 @@ export function addNote(text) {
 function addNoteSuccess(note) {
   return {
     type: ADD_NOTE_SUCCESS,
+    note,
+  };
+}
+
+export function updateNote(note) {
+  return {
+    type: UPDATE_NOTE,
+    noteOperation: {
+      request: updateNoteRequest(note),
+      success: updateNoteSuccess,
+    },
+  };
+}
+
+function updateNoteSuccess(note) {
+  return {
+    type: UPDATE_NOTE_SUCCESS,
     note,
   };
 }

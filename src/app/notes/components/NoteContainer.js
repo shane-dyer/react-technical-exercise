@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { deleteNote } from '../state';
+import { updateNote, deleteNote } from '../state';
 import Note from './Note';
 
 function mapStateToProps(state, ownProps) {
@@ -8,6 +8,9 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
+    updateNote: (note) => {
+      dispatch(updateNote(note));
+    },
     deleteNote: (id) => {
       dispatch(deleteNote(id));
     },
