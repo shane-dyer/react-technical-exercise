@@ -31,7 +31,7 @@ const StyledNote = ({ note, deleteNote }) => {
   return (
     <Note>
       <p>{note.text}</p>
-      <button type="button" onClick={onDeleteClick}>
+      <button type="button" title="Delete note" aria-label="Delete note" onClick={onDeleteClick}>
         Delete
       </button>
     </Note>

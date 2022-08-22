@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import NotesContainer from './notes/components/NotesContainer';
 import { ThemeProvider } from 'styled-components';
+import NotesContainer from './notes/components/NotesContainer';
 import store from './store';
 import { lightTheme, darkTheme } from './theme';
+import { useTheme } from './hooks/useTheme';
 
 const App = () => {
-  const [theme, setTheme] = useState('light');
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+  const [theme, toggleTheme] = useTheme();
 
   return (
     <Provider store={store}>

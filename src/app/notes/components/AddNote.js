@@ -45,8 +45,8 @@ const StyledAddNote = ({ addNote }) => {
   return (
     <AddNote id="addNoteWrapper">
       <label htmlFor="addNote">Add another:</label>
-      <input type="text" id="addNote" value={text} placeholder="text for new note" onChange={onTextChange} />
-      <button type="button" onClick={onButtonClick}>
+      <input type="text" id="addNote" value={text} placeholder="Text for new note" onChange={onTextChange} />
+      <button type="button" title="Add note" aria-label="Add note" onClick={onButtonClick}>
         Add
       </button>
     </AddNote>
