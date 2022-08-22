@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { isDayTime } from '../utils/date';
 
 const themeFromStorage = localStorage.getItem('theme');
-const themeFromDateTime = isDayTime() ? 'light' : 'dark';
+const getThemeByDateTime = () => isDayTime() ? 'light' : 'dark';
 
 // Custom hook to manage the app theme
 const useTheme = () => {
-  // Theme from storage takes presidence over theme from date time
-  const [theme, setTheme] = useState(themeFromStorage || themeFromDateTime);
+  // Theme from storage takes precedence over theme from date time
+  const [theme, setTheme] = useState(themeFromStorage || getThemeByDateTime());
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -23,8 +23,7 @@ const useTheme = () => {
       if (themeFromStorage) {
         clearInterval(interval);
       } else {
-        const newTheme = isDayTime() ? 'light' : 'dark';
-        setTheme(newTheme);
+        setTheme(getThemeByDateTime());
       }
     }, 60000); // 1 minute
 
