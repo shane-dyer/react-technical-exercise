@@ -14,9 +14,13 @@ const Note = styled.div`
   p {
     margin: 0;
     cursor: pointer;
+    &:hover {
+      color: ${(props) => props.theme.noteTextColor};
+    }
   }
   input {
     display: block;
+    font-size: 15px;
     background: ${(props) => props.theme.textFieldBackground};
     border: ${(props) => props.theme.textFieldBorderStyle};
     padding: 8px;
@@ -36,7 +40,7 @@ const Note = styled.div`
 
 const StyledNote = ({ note, updateNote, deleteNote }) => {
   const inputRef = useRef(null);
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState(false); // State to trigger inline editing field
 
   const onTextChange = (event) => {
     updateNote({
@@ -45,6 +49,7 @@ const StyledNote = ({ note, updateNote, deleteNote }) => {
     });
   };
 
+  // Close the editing of note text on enter or escape key
   const onKeyDown = (event) => {
     if (event.key === 'Enter' || event.key === 'Escape') {
       setEditing(false);
@@ -55,8 +60,9 @@ const StyledNote = ({ note, updateNote, deleteNote }) => {
     deleteNote(note.id);
   };
 
+  // Add focus on input field after click on note text
   useEffect(() => {
-    if (inputRef.current) {
+    if (editing && inputRef.current) {
       inputRef.current.focus();
     }
   }, [editing]);

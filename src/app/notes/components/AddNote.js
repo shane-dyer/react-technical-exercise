@@ -36,9 +36,10 @@ const StyledAddNote = ({ addNote }) => {
   };
 
   const onButtonClick = () => {
+    // Don’t add note if field is empty
     if (text) {
       addNote(text);
-      setText('');
+      setText(''); // Reset once note has been added
     }
   };
 

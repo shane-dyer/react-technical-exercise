@@ -7,6 +7,7 @@ import { lightTheme, darkTheme } from './theme';
 import useTheme from '../hooks/useTheme';
 
 const App = () => {
+  // Custom hook to manage the app theme
   const [theme, toggleTheme] = useTheme();
 
   return (

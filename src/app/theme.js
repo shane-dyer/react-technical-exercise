@@ -25,6 +25,7 @@ const lightTheme = {
   buttonDeleteBackground: 'red',
   buttonThemeBackground: 'rgba(0,0,0, 0.06)',
   addNoteBackground: 'rgba(0,0,0, 0.05)',
+  noteTextColor: '#444',
 };
 
 const darkTheme = {
@@ -44,6 +45,7 @@ const darkTheme = {
   buttonDeleteBackground: 'red',
   buttonThemeBackground: 'rgba(255,255,255, 0.15)',
   addNoteBackground: 'rgba(255,255,255, 0.08)',
+  noteTextColor: '#fff',
 };
 
 export { lightTheme, darkTheme };
